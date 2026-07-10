@@ -29,7 +29,7 @@ export default function CircularLink({ profiles = defaultProfiles, onSelect }) {
   const offset = -(focusedIndex - mid) * SLOT_WIDTH;
 
   return (
-    <div className="flex w-full justify-center overflow-hidden py-8">
+    <div className="flex w-screen justify-center overflow-hidden py-8">
       <motion.div
         className="flex items-end"
         animate={{ x: offset }}
@@ -79,12 +79,12 @@ export default function CircularLink({ profiles = defaultProfiles, onSelect }) {
                 </svg>
               </motion.div>
               <AnimatePresence>
-                {isFocused && (
+                {(
                   <motion.span
                     initial={{ opacity: 0, y: -6 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -6 }}
-                    className="text-base font-medium text-white"
+                    className="text-base font-extrabold text-white "
                   >
                     {profile.label}
                   </motion.span>

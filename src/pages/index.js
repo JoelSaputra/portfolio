@@ -25,6 +25,15 @@ export default function Home() {
     <div className="relative flex min-h-screen w-full flex-col items-center justify-center text-white">
       <Ps5Background />
 
+      <div className="mb-5 flex flex-col items-center text-center">
+        <h1 className="text-4xl font-light tracking-tight sm:text-5xl">
+          Welcome to Joel's Portfolio
+        </h1>
+        <p className="mt-4 text-lg text-white/50">
+          Please press 'Enter'
+        </p>
+      </div>
+
       <div>
           <CircularLink/>
       </div>
