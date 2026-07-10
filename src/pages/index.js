@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import Ps5Background from "@/components/Ps5Background";
 import CircularLink from "@/components/CircularLink";
 
@@ -20,6 +21,7 @@ function useClock() {
 
 export default function Home() {
   const time = useClock();
+  const router = useRouter();
 
   return (
     <div className="relative flex min-h-screen w-full flex-col items-center justify-center text-white">
@@ -35,7 +37,7 @@ export default function Home() {
       </div>
 
       <div>
-          <CircularLink/>
+          <CircularLink onSelect={(profile) => router.push(`/${profile.id}`)} />
       </div>
 
       <div className="absolute right-8 top-6 text-lg tracking-wide text-white/80">

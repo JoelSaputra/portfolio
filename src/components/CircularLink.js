@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const SLOT_WIDTH = 180;
 
 const defaultProfiles = [
-  { id: "about", label: "About Me", color: "#4f9dff" },
-  { id: "projects", label: "Projects", color: "#ff7a4f" },
-  { id: "skills", label: "Skills", color: "#4fffb0" },
-  { id: "contact", label: "Contact", color: "#c94fff" },
+  { id: "home", label: "Home", color: "#4f9dff" },
+  { id: "contact", label: "Contact Me", color: "#c94fff" },
 ];
 
 export default function CircularLink({ profiles = defaultProfiles, onSelect }) {
   const [focusedIndex, setFocusedIndex] = useState(0);
+  const focusedIndexRef = useRef(focusedIndex);
+  focusedIndexRef.current = focusedIndex;
 
   useEffect(() => {
     function handleKey(e) {
@@ -19,17 +19,19 @@ export default function CircularLink({ profiles = defaultProfiles, onSelect }) {
         setFocusedIndex((i) => Math.min(i + 1, profiles.length - 1));
       } else if (e.key === "ArrowLeft") {
         setFocusedIndex((i) => Math.max(i - 1, 0));
+      } else if (e.key === "Enter") {
+        onSelect?.(profiles[focusedIndexRef.current]);
       }
     }
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, [profiles.length]);
+  }, [profiles, onSelect]);
 
   const mid = (profiles.length - 1) / 2;
   const offset = -(focusedIndex - mid) * SLOT_WIDTH;
 
   return (
-    <div className="flex w-screen justify-center overflow-hidden py-8">
+    <div className="flex w-screen justify-center mb-20 overflow-hidden py-8">
       <motion.div
         className="flex items-end"
         animate={{ x: offset }}
