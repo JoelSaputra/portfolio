@@ -1,4 +1,4 @@
-import LiquidEther from "@/components/LiquidEther";
+import { SVG3D } from "3dsvg";
 
 export const id = "about-me";
 
@@ -13,27 +13,8 @@ export function Thumbnail() {
 
 export function Background() {
   return (
-    <div className="fixed inset-0 -z-10 bg-[#0a0a0a]">
-      <LiquidEther
-        colors={["#22c55e", "#0a0a0a", "#16a34a"]}
-        mouseForce={20}
-        cursorSize={100}
-        isViscous
-        viscous={30}
-        iterationsViscous={32}
-        iterationsPoisson={32}
-        resolution={0.5}
-        isBounce={false}
-        autoDemo
-        autoSpeed={0.5}
-        autoIntensity={2.2}
-        takeoverDuration={0.25}
-        autoResumeDelay={3000}
-        autoRampDuration={0.6}
-        style={{ position: "absolute", inset: 0 }}
-      />
-
-      <div className="absolute left-16 top-1/2 max-w-xl -translate-y-1/2">
+    <div className="matte-metal-card fixed inset-0 -z-10">
+      <div className="absolute left-16 top-1/2 mt-8 max-w-xl -translate-y-1/2">
         <p className="text-sm font-medium tracking-[0.2em] text-[#22c55e]">
           HEY, I&apos;M
         </p>
@@ -53,6 +34,28 @@ export function Background() {
           better — and right now, I&apos;m on the hunt for my first real shot
           in tech.
         </p>
+      </div>
+
+
+      <div className="absolute left-140 mb-5 w-250 h-220">
+        <SVG3D
+    text="JS"
+  depth={2.7}
+  smoothness={1}
+  color="#22c55e"
+  material="clay"
+  metalness={0}
+  roughness={1}
+  texture="blob:https://3dsvg.design/f70b0696-0216-4e09-a724-122f43b6a4cb"
+  textureRepeat={1.05}
+  textureRotation={-0.18}
+  animate="spinFloat"
+  animateSpeed={1.1}
+  zoom={14}
+  cursorOrbit
+  orbitStrength={0.07}
+  ambientIntensity={0}
+/>
       </div>
     </div>
   );

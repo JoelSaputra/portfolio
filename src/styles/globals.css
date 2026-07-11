@@ -4,6 +4,19 @@
   --font-sans: var(--font-manrope);
 }
 
+:root {
+  --card: #0a0a0a;
+}
+
+.matte-metal-card {
+  background:
+    radial-gradient(ellipse 100% 80% at 0% 0%, rgba(140, 140, 140, 0.35), transparent 70%),
+    radial-gradient(ellipse 100% 80% at 100% 0%, rgba(140, 140, 140, 0.35), transparent 70%),
+    radial-gradient(ellipse 100% 80% at 0% 100%, rgba(140, 140, 140, 0.35), transparent 70%),
+    radial-gradient(ellipse 100% 80% at 100% 100%, rgba(140, 140, 140, 0.35), transparent 70%),
+    var(--card);
+}
+
 @keyframes slow-spin-y {
   from {
     transform: rotateY(0deg);
@@ -15,4 +28,39 @@
 
 .animate-slow-spin-y {
   animation: slow-spin-y 20s linear infinite;
+}
+
+.ambient-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.45;
+  will-change: transform;
+}
+
+@keyframes blob-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(60px, 40px) scale(1.15); }
+}
+
+@keyframes blob-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-50px, -30px) scale(1.1); }
+}
+
+@keyframes blob-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-40px, 50px) scale(0.9); }
+}
+
+.ambient-blob-1 {
+  animation: blob-drift-1 18s ease-in-out infinite;
+}
+
+.ambient-blob-2 {
+  animation: blob-drift-2 22s ease-in-out infinite;
+}
+
+.ambient-blob-3 {
+  animation: blob-drift-3 26s ease-in-out infinite;
 }
