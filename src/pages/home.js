@@ -12,9 +12,9 @@ const skillDefs = [
   {
     name: "Python",
     frameworks: [
-      { name: "NumPy", image: null },
-      { name: "Pandas", image: null },
-      { name: "FastAPI", image: null },
+      { name: "NumPy", image: "/images/NumPY.png" },
+      { name: "Pandas", image: "/images/Pandas.png" },
+      { name: "FastAPI", image: "/images/FastAPI.png" },
     ],
     thumbnailColor: "#3776AB",
     thumbnailImage: "/images/Python-Thumbnail.png",
@@ -33,9 +33,9 @@ const skillDefs = [
 
   { name: "JavaScript",
     frameworks: [
-      { name: "NumPy", image: null },
-      { name: "Pandas", image: null },
-      { name: "FastAPI", image: null },
+      { name: "NumPy", image: "/images/NumPY.png" },
+      { name: "Pandas", image: "/images/Pandas.png" },
+      { name: "FastAPI", image: "/images/FastAPI.png" },
     ],
     thumbnailColor: "#ffef42",
     thumbnailImage: "/images/JavaScript-Symbol-Thumbnail.png",
