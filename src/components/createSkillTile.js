@@ -116,19 +116,27 @@ export default function createSkillTile(
             <h2 className="text-7xl font-semibold mt-5 ">{name}</h2>
 
             {(usedInSchoolwork || usedInProjects) && (
-              <ul className="mt-4 list-disc pl-5 text-white/70 italic font-bold">
+              <motion.ul
+                className="mt-4 list-disc pl-5 text-white/70 italic font-bold"
+                initial={{ opacity: 0, y: 80 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: 0.65 }}
+              >
                 {usedInProjects && <li>Projects</li>}
                 {usedInSchoolwork && <li>Schoolwork</li>}
-              </ul>
+              </motion.ul>
             )}
 
             {frameworks.length > 0 && !showFrameworks && (
-              <button
+              <motion.button
                 onClick={handleReveal}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: 0.9 }}
                 className="mt-8 rounded-full border border-white/30 px-6 py-2 text-sm font-medium text-white transition-colors hover:bg-white hover:text-[#0a0a0a]"
               >
                 Frameworks and Libraries I have used
-              </button>
+              </motion.button>
             )}
 
             {showFrameworks && (

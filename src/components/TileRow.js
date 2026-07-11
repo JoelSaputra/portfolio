@@ -26,7 +26,7 @@ const TileRow = ({tiles, focusedIndex, setFocusedIndex}) => {
 
 
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-2">
       {tiles.map((tile, index) => {
         const isFocused = (index === focusedIndex);
         const size = isFocused ? TILE_WIDTH * 1.4 : TILE_WIDTH;
@@ -35,6 +35,7 @@ const TileRow = ({tiles, focusedIndex, setFocusedIndex}) => {
             key={tile.id}
             onMouseEnter={() => setFocusedIndex(index)}
             onFocus={() => setFocusedIndex(index)}
+            initial={false}
             animate={{ width: size, height: size, opacity: isFocused ? 1 : 0.7 }}
             transition={{ type: "spring", stiffness: 260, damping: 24 }}
             className="flex-none overflow-hidden rounded-md focus:outline-none"

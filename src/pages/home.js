@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import TopHeaderBar from "@/components/TopHeaderBar";
 import TileRow from "@/components/TileRow";
 
@@ -46,6 +47,7 @@ const skillDefs = [
     backgroundImage:"/images/JavascriptLogo-Background2.png",
     logoStyle: { width: 500, height: 500, right: 180, bottom: 80 },
     thumbnailLogoStyle: { width: "200%", height: "300%", top: 0, left: 0 },
+    usedInProjects: true,
    },
 
   { name: "HTML5",
@@ -57,6 +59,7 @@ const skillDefs = [
     backgroundImage:"/images/HTML5-Background.png",
     logoStyle: { width: 500, height: 400, right: 180, bottom: 120 },
     thumbnailLogoStyle: { width: "80%", height: "80%", top: 0, left: 0 },
+    usedInProjects: true,
   },
   { name: "CSS",
     frameworks: [
@@ -67,6 +70,7 @@ const skillDefs = [
     backgroundImage:"/images/CSS-logo-Background.png",
     logoStyle: { width: 500, height: 350, right: 180, bottom: 140 },
     thumbnailLogoStyle: {width: "80%", height: "80%", top: 0, left: 0},
+    usedInProjects: true,
    },
   { name: "C",
     thumbnailColor: " #342fbc",
@@ -74,6 +78,7 @@ const skillDefs = [
     backgroundImage:"/images/Cprogramming-Thumbnail.png",
     logoStyle: { width: 500, height: 500, right: 180, bottom: 80 },
     thumbnailLogoStyle: { width: "80%", height: "80%", top: 0, left: 0},
+    usedInSchoolwork: true,
    },
   { name: "SQL" },
 ];
@@ -121,10 +126,20 @@ export default function Home() {
 
   return (
     <div className="relative z-0 min-h-screen w-full text-white">
-      <focusedTile.Background
-        onHideTileRow={() => setTileRowHidden(true)}
-        onShowTileRow={() => setTileRowHidden(false)}
-      />
+      <AnimatePresence mode="sync">
+        <motion.div
+          key={focusedTile.id}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+        >
+          <focusedTile.Background
+            onHideTileRow={() => setTileRowHidden(true)}
+            onShowTileRow={() => setTileRowHidden(false)}
+          />
+        </motion.div>
+      </AnimatePresence>
 
       <TopHeaderBar activeTab={activeTab} onTabChange={handleTabChange} />
 
