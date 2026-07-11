@@ -25,9 +25,6 @@ function LinkedInIcon() {
 }
 
 
-
-
-// Placeholder icons — swap these for real brand SVGs/images whenever you have them
 function PlaceholderIcon({ label }) {
   return (
     <span className="flex h-[30px] w-[30px] items-center justify-center rounded-full border border-white/60 text-xs font-semibold text-white">
