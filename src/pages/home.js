@@ -22,14 +22,17 @@ const skillDefs = [
     backgroundImage: "/images/Python-Emblem.png",
     logoStyle: { width: 560, height: 320, right: 120, bottom: 160 },
     thumbnailLogoStyle: { width: "140%", height: "160%", top: 0, left: 0 },
+    usedInSchoolwork: true,
+    usedInProjects: true,
   },
-  
+
   { name: "Java",
     thumbnailColor: "#e93e3b",
     thumbnailImage: "/images/JavaThumbnailLogo.png",
     backgroundImage:"/images/JavaLogo-Background.png",
     logoStyle: { width: 500, height: 600, right: 200, bottom: 80 },
     thumbnailLogoStyle: { width: "140%", height: "160%", top: 0, left: 0 },
+    usedInSchoolwork: true,
    },
 
   { name: "JavaScript",
@@ -82,7 +85,9 @@ const skillTiles = skillDefs.map((skill) =>
     skill.thumbnailImage,
     skill.backgroundImage,
     skill.logoStyle,
-    skill.thumbnailLogoStyle
+    skill.thumbnailLogoStyle,
+    skill.usedInSchoolwork,
+    skill.usedInProjects
   )
 );
 
