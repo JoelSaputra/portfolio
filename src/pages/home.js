@@ -9,18 +9,68 @@ import * as DummyProject from "@/components/DummyProject"
 import createSkillTile from "@/components/createSkillTile"
 
 const skillDefs = [
-  { name: "Java" },
   {
     name: "Python",
-    frameworks: ["NumPy", "Pandas", "FastAPI"],
+    frameworks: [
+      { name: "NumPy", image: null },
+      { name: "Pandas", image: null },
+      { name: "FastAPI", image: null },
+    ],
     thumbnailColor: "#3776AB",
     thumbnailImage: "/images/Python-Thumbnail.png",
-    backgroundImage: "/images/Python-Emblem.png"
+    backgroundImage: "/images/Python-Emblem.png",
+    logoStyle: { width: 560, height: 320, right: 120, bottom: 160 },
+    thumbnailLogoStyle: { width: "140%", height: "160%", top: 0, left: 0 },
   },
-  { name: "JavaScript" },
-  { name: "HTML5" },
-  { name: "CSS" },
-  { name: "C" },
+  
+  { name: "Java",
+    thumbnailColor: "#e93e3b",
+    thumbnailImage: "/images/JavaThumbnailLogo.png",
+    backgroundImage:"/images/JavaLogo-Background.png",
+    logoStyle: { width: 500, height: 600, right: 200, bottom: 80 },
+    thumbnailLogoStyle: { width: "140%", height: "160%", top: 0, left: 0 },
+   },
+
+  { name: "JavaScript",
+    frameworks: [
+      { name: "NumPy", image: null },
+      { name: "Pandas", image: null },
+      { name: "FastAPI", image: null },
+    ],
+    thumbnailColor: "#ffef42",
+    thumbnailImage: "/images/JavaScript-Symbol-Thumbnail.png",
+    backgroundImage:"/images/JavascriptLogo-Background2.png",
+    logoStyle: { width: 500, height: 500, right: 180, bottom: 80 },
+    thumbnailLogoStyle: { width: "200%", height: "300%", top: 0, left: 0 },
+   },
+
+  { name: "HTML5",
+    frameworks: [
+      { name: "NumPy", image: null },
+      { name: "Pandas", image: null },
+      { name: "FastAPI", image: null },
+    ],
+    thumbnailColor: "#ff6027",
+    thumbnailImage: "/images/HTML5-Thumbnail.png",
+    backgroundImage:"/images/HTML5-Background.png",
+    logoStyle: { width: 500, height: 400, right: 180, bottom: 120 },
+    thumbnailLogoStyle: { width: "80%", height: "80%", top: 0, left: 0 },
+  },
+  { name: "CSS",
+    frameworks: [{ name: "TailwindCSS", image: null }],
+    thumbnailColor: "#348cf1",
+    thumbnailImage: "/images/CSS-logo-Thumbnail.png",
+    backgroundImage:"/images/CSS-logo-Background.png",
+    logoStyle: { width: 500, height: 350, right: 180, bottom: 140 },
+    thumbnailLogoStyle: {width: "80%", height: "80%", top: 0, left: 0},
+   },
+  { name: "C",
+    thumbnailColor: " #342fbc",
+    thumbnailImage: "/images/Cprogramming-Thumbnail.png",
+    backgroundImage:"/images/Cprogramming-Thumbnail.png",
+    logoStyle: { width: 500, height: 500, right: 180, bottom: 80 },
+    thumbnailLogoStyle: { width: "80%", height: "80%", top: 0, left: 0},
+   },
   { name: "SQL" },
 ];
 const skillTiles = skillDefs.map((skill) =>
@@ -29,7 +79,9 @@ const skillTiles = skillDefs.map((skill) =>
     skill.frameworks,
     skill.thumbnailColor,
     skill.thumbnailImage,
-    skill.backgroundImage
+    skill.backgroundImage,
+    skill.logoStyle,
+    skill.thumbnailLogoStyle
   )
 );
 

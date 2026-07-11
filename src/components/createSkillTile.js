@@ -13,14 +13,21 @@ const cardVariants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
+const defaultLogoStyle = { width: 560, height: 320, right: 120, bottom: 160 };
+const defaultThumbnailLogoStyle = { width: "140%", height: "160%", top: 0, left: 0 };
+
 export default function createSkillTile(
   name,
   frameworks = [],
   thumbnailColor = null,
   thumbnailImage = null,
   backgroundImage = null,
+  logoStyle = {},
+  thumbnailLogoStyle = {},
 ) {
   const id = name.toLowerCase().replace(/\s+/g, "-");
+  const logo = { ...defaultLogoStyle, ...logoStyle };
+  const thumbLogo = { ...defaultThumbnailLogoStyle, ...thumbnailLogoStyle };
 
   return {
     id,
@@ -38,7 +45,14 @@ export default function createSkillTile(
             <img
               src={thumbnailImage}
               alt={`${name} logo`}
-              className="h-7/5 w-8/5 object-contain"
+              className="object-contain"
+              style={{
+                position: "relative",
+                width: thumbLogo.width,
+                height: thumbLogo.height,
+                top: thumbLogo.top,
+                left: thumbLogo.left,
+              }}
             />
           )}
         </div>
@@ -77,7 +91,13 @@ export default function createSkillTile(
             <motion.img
               src={backgroundImage}
               alt={`${name} logo`}
-              className="fixed right-30 bottom-40 h-80 w-140 object-contain"
+              className="fixed object-contain"
+              style={{
+                width: logo.width,
+                height: logo.height,
+                right: logo.right,
+                bottom: logo.bottom,
+              }}
               animate={{ y: [0, -20, 0], opacity: showFrameworks ? 0.25 : 0.9 }}
               transition={{
                 y: { duration: 1.6, repeat: Infinity, ease: "easeInOut" },
@@ -91,7 +111,7 @@ export default function createSkillTile(
             animate={{ paddingTop: showFrameworks ? 120 : 288 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            <h2 className="text-7xl font-semibold ">{name}</h2>
+            <h2 className="text-7xl font-semibold mt-5 ">{name}</h2>
             <p className="mt-2 text-white/70">
               Details about {name} coming soon.
             </p>
@@ -116,16 +136,27 @@ export default function createSkillTile(
                   animate="show"
                   variants={listVariants}
                 >
-                  {frameworks.map((fw) => (
-                    <motion.div
-                      key={fw}
-                      variants={cardVariants}
-                      className="w-72 overflow-hidden rounded-md border border-white/10"
-                    >
-                      <div className="h-72 w-full bg-[#1a1a1a]" />
-                      <p className="px-4 py-3 text-lg text-white/80">{fw}</p>
-                    </motion.div>
-                  ))}
+                  {frameworks.map((fw) => {
+                    const framework = typeof fw === "string" ? { name: fw, image: null } : fw;
+                    return (
+                      <motion.div
+                        key={framework.name}
+                        variants={cardVariants}
+                        className="w-72 overflow-hidden rounded-md border border-white/10"
+                      >
+                        <div className="flex h-72 w-full items-center justify-center bg-[#1a1a1a]">
+                          {framework.image && (
+                            <img
+                              src={framework.image}
+                              alt={`${framework.name} logo`}
+                              className="h-4/5 w-4/5 object-contain"
+                            />
+                          )}
+                        </div>
+                        <p className="px-4 py-3 text-lg text-white/80">{framework.name}</p>
+                      </motion.div>
+                    );
+                  })}
                 </motion.div>
 
                 <button
