@@ -2,6 +2,7 @@ import { useState } from "react";
 import TopHeaderBar from "@/components/TopHeaderBar";
 import TileRow from "@/components/TileRow";
 
+
 import * as AboutMe from "@/components/AboutMe"
 import * as Education from "@/components/Education"
 import * as DummyProject from "@/components/DummyProject"
@@ -29,7 +30,7 @@ export default function Home() {
   
 
   return (
-    <div className="relative min-h-screen w-full text-white">
+    <div className="relative z-0 min-h-screen w-full text-white">
       <focusedTile.Background />
 
       <TopHeaderBar activeTab={activeTab} onTabChange={handleTabChange} />
