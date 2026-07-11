@@ -10,14 +10,28 @@ import createSkillTile from "@/components/createSkillTile"
 
 const skillDefs = [
   { name: "Java" },
-  { name: "Python", frameworks: ["NumPy", "Pandas", "FastAPI"] },
+  {
+    name: "Python",
+    frameworks: ["NumPy", "Pandas", "FastAPI"],
+    thumbnailColor: "#3776AB",
+    thumbnailImage: "/images/Python-Thumbnail.png",
+    backgroundImage: "/images/Python-Emblem.png"
+  },
   { name: "JavaScript" },
   { name: "HTML5" },
   { name: "CSS" },
   { name: "C" },
   { name: "SQL" },
 ];
-const skillTiles = skillDefs.map((skill) => createSkillTile(skill.name, skill.frameworks));
+const skillTiles = skillDefs.map((skill) =>
+  createSkillTile(
+    skill.name,
+    skill.frameworks,
+    skill.thumbnailColor,
+    skill.thumbnailImage,
+    skill.backgroundImage
+  )
+);
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("about");
@@ -49,7 +63,10 @@ export default function Home() {
 
   return (
     <div className="relative z-0 min-h-screen w-full text-white">
-      <focusedTile.Background onHideTileRow={() => setTileRowHidden(true)} />
+      <focusedTile.Background
+        onHideTileRow={() => setTileRowHidden(true)}
+        onShowTileRow={() => setTileRowHidden(false)}
+      />
 
       <TopHeaderBar activeTab={activeTab} onTabChange={handleTabChange} />
 
