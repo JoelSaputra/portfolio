@@ -28,7 +28,7 @@ export default function Home() {
   
 
   return (
-    <div className="relative min-h-screen w-full  text-white">
+    <div className="relative min-h-screen w-full text-white">
       <focusedTile.Background />
 
       <TopHeaderBar activeTab={activeTab} onTabChange={handleTabChange} />

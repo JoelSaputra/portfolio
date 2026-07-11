@@ -3,3 +3,16 @@
 @theme inline {
   --font-sans: var(--font-manrope);
 }
+
+@keyframes slow-spin-y {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.animate-slow-spin-y {
+  animation: slow-spin-y 20s linear infinite;
+}
