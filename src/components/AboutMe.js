@@ -38,24 +38,7 @@ export function Background() {
 
 
       <div className="absolute left-140 mb-5 w-250 h-220">
-        <SVG3D
-    text="JS"
-  depth={2.7}
-  smoothness={1}
-  color="#22c55e"
-  material="clay"
-  metalness={0}
-  roughness={1}
-  texture="blob:https://3dsvg.design/f70b0696-0216-4e09-a724-122f43b6a4cb"
-  textureRepeat={1.05}
-  textureRotation={-0.18}
-  animate="spinFloat"
-  animateSpeed={1.1}
-  zoom={14}
-  cursorOrbit
-  orbitStrength={0.07}
-  ambientIntensity={0}
-/>
+        
       </div>
     </div>
   );

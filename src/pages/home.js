@@ -6,39 +6,61 @@ import TileRow from "@/components/TileRow";
 import * as AboutMe from "@/components/AboutMe"
 import * as Education from "@/components/Education"
 import * as DummyProject from "@/components/DummyProject"
-import * as DummySkill from "@/components/DummySkill"
+import createSkillTile from "@/components/createSkillTile"
+
+const skillDefs = [
+  { name: "Java" },
+  { name: "Python", frameworks: ["NumPy", "Pandas", "FastAPI"] },
+  { name: "JavaScript" },
+  { name: "HTML5" },
+  { name: "CSS" },
+  { name: "C" },
+  { name: "SQL" },
+];
+const skillTiles = skillDefs.map((skill) => createSkillTile(skill.name, skill.frameworks));
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("about");
   const [focusedIndex, setFocusedIndex] = useState(0);
+  const [tileRowHidden, setTileRowHidden] = useState(false);
 
-  
+
   const tabsData = {
     about: [ AboutMe, Education],
     projects: [DummyProject],
-    skills: [DummySkill],
+    skills: skillTiles,
   }
 
   const tiles = tabsData[activeTab];
   const focusedTile = tiles[focusedIndex];
-    
+
 
   function handleTabChange(tab) {
     setActiveTab(tab);
     setFocusedIndex(0);
+    setTileRowHidden(false);
   }
-  
+
+  function handleFocusChange(index) {
+    setFocusedIndex(index);
+    setTileRowHidden(false);
+  }
+
 
   return (
     <div className="relative z-0 min-h-screen w-full text-white">
-      <focusedTile.Background />
+      <focusedTile.Background onHideTileRow={() => setTileRowHidden(true)} />
 
       <TopHeaderBar activeTab={activeTab} onTabChange={handleTabChange} />
 
-      <div className="absolute left-10 top-28">
-          <TileRow tiles={tiles} focusedIndex={focusedIndex} setFocusedIndex={setFocusedIndex}/>
+      <div
+        className={`absolute left-10 top-28 transition-opacity duration-500 ${
+          tileRowHidden ? "pointer-events-none opacity-0" : "opacity-100"
+        }`}
+      >
+          <TileRow tiles={tiles} focusedIndex={focusedIndex} setFocusedIndex={handleFocusChange}/>
       </div>
     </div>
-    
+
   );
 }
