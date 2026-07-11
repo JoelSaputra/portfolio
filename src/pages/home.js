@@ -15,6 +15,7 @@ const skillDefs = [
       { name: "NumPy", image: "/images/NumPY.png" },
       { name: "Pandas", image: "/images/Pandas.png" },
       { name: "FastAPI", image: "/images/FastAPI.png" },
+      { name: "SQLite3", image: "/images/SQLite3.png"}
     ],
     thumbnailColor: "#3776AB",
     thumbnailImage: "/images/Python-Thumbnail.png",
@@ -33,9 +34,9 @@ const skillDefs = [
 
   { name: "JavaScript",
     frameworks: [
-      { name: "NumPy", image: "/images/NumPY.png" },
-      { name: "Pandas", image: "/images/Pandas.png" },
-      { name: "FastAPI", image: "/images/FastAPI.png" },
+      { name: "ReactJS", image: "/images/ReactJS.png" },
+      { name: "NextJS", image: "/images/Next.js-thumbnail.png" },
+      { name: "Framer Motion", image: "/images/FramerMotion.png"}
     ],
     thumbnailColor: "#ffef42",
     thumbnailImage: "/images/JavaScript-Symbol-Thumbnail.png",
@@ -46,9 +47,7 @@ const skillDefs = [
 
   { name: "HTML5",
     frameworks: [
-      { name: "NumPy", image: null },
-      { name: "Pandas", image: null },
-      { name: "FastAPI", image: null },
+      { name: "ReactJS", image: "/images/ReactJS.png" },
     ],
     thumbnailColor: "#ff6027",
     thumbnailImage: "/images/HTML5-Thumbnail.png",
@@ -57,7 +56,9 @@ const skillDefs = [
     thumbnailLogoStyle: { width: "80%", height: "80%", top: 0, left: 0 },
   },
   { name: "CSS",
-    frameworks: [{ name: "TailwindCSS", image: null }],
+    frameworks: [
+      { name: "TailwindCSS", image: "/images/tailwind-thumbnail.png"},
+    ],
     thumbnailColor: "#348cf1",
     thumbnailImage: "/images/CSS-logo-Thumbnail.png",
     backgroundImage:"/images/CSS-logo-Background.png",
