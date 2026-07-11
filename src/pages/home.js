@@ -2,6 +2,7 @@ import { useState } from "react";
 import TopHeaderBar from "@/components/TopHeaderBar";
 import TileRow from "@/components/TileRow";
 
+import * as AboutMe from "@/components/AboutMe"
 import * as Education from "@/components/Education"
 import * as DummyProject from "@/components/DummyProject"
 import * as DummySkill from "@/components/DummySkill"
@@ -12,7 +13,7 @@ export default function Home() {
 
   
   const tabsData = {
-    about: [ Education],
+    about: [ AboutMe, Education],
     projects: [DummyProject],
     skills: [DummySkill],
   }

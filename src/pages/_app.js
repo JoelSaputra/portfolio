@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import "@/components/LiquidEther.css";
 import { Manrope } from "next/font/google";
 
 const manrope = Manrope({
