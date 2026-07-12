@@ -19,24 +19,34 @@ export default function createProjectTile(
     id,
     Thumbnail() {
       return (
-        <div
-          className="flex h-full w-full items-center justify-center rounded-md"
-          style={{
-            background: thumbnailColors
-              ? `radial-gradient(ellipse at top right, ${thumbnailColors.join(", ")})`
-              : thumbnailColor
-              ? `linear-gradient(135deg, ${thumbnailColor}, #0a0a0a 85%)`
-              : "#1a1a1a",
-          }}
-        >
+        <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-md">
+          <div
+            className="absolute inset-0 scale-110"
+            style={{
+              background: thumbnailColors
+                ? `radial-gradient(ellipse at top right, ${thumbnailColors.join(", ")})`
+                : thumbnailColor
+                ? `linear-gradient(135deg, ${thumbnailColor}, #0a0a0a 85%)`
+                : "#1a1a1a",
+              ...(backgroundImage
+                ? {
+                    backgroundImage: `linear-gradient(rgba(10,10,10,0.45), rgba(10,10,10,0.45)), url("${backgroundImage}")`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    filter: "blur(2px)",
+                  }
+                : {}),
+            }}
+          />
+
           {thumbnailImage ? (
             <img
               src={thumbnailImage}
               alt={`${name} thumbnail`}
-              className="h-4/5 w-4/5 object-contain"
+              className="relative h-4/5 w-4/5 object-contain"
             />
           ) : (
-            <div className="flex flex-col items-center gap-2">
+            <div className="relative flex flex-col items-center gap-2">
               {Icon && <Icon className="h-8 w-8 text-white" />}
               <p className="px-3 text-center text-[12px] font-extrabold  text-white">{name}</p>
             </div>

@@ -1,13 +1,13 @@
 import { SVG3D } from "3dsvg";
+import { User } from "lucide-react";
 
 export const id = "about-me";
 
 export function Thumbnail() {
   return (
-    <div
-      className="h-full w-full rounded-md"
-      style={{ background: "linear-gradient(135deg, #22c55eaa, #0a0a0a 85%)" }}
-    />
+    <div className="matte-metal-card flex h-full w-full items-center justify-center rounded-md">
+      <User className="h-8 w-8 text-white" />
+    </div>
   );
 }
 
