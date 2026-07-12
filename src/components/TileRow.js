@@ -34,9 +34,15 @@ const TileRow = ({tiles, focusedIndex, setFocusedIndex}) => {
           <motion.button
             key={tile.id}
             onFocus={() => setFocusedIndex(index)}
-            initial={false}
-            animate={{ width: size, height: size, opacity: isFocused ? 1 : 0.7 }}
-            transition={{ type: "spring", stiffness: 260, damping: 24 }}
+            initial={{ x: 800, opacity: 0, scale: 0.3, width: size, height: size }}
+            animate={{ x: 0, width: size, height: size, opacity: isFocused ? 1 : 0.7, scale: 1 }}
+            transition={{
+              x: { type: "spring", stiffness: 60, damping: 20 },
+              opacity: { duration: 1 },
+              scale: { type: "spring", stiffness: 70, damping: 18 },
+              width: { type: "spring", stiffness: 260, damping: 24 },
+              height: { type: "spring", stiffness: 260, damping: 24 },
+            }}
             className="flex-none overflow-hidden rounded-md focus:outline-none"
             style={{
               border: isFocused ? "2px solid white" : "1px solid rgba(255,255,255,0.15)",
