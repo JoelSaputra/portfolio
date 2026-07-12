@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { Home } from "lucide-react";
 import playSound from "@/lib/playSound";
 import MuteButton from "@/components/MuteButton";
 
@@ -61,6 +63,7 @@ const socialLinks = [
 
 export default function TopHeaderBar({ activeTab, onTabChange }) {
   const time = useClock();
+  const router = useRouter();
 
   return (
     <div className="absolute left-0 top-0 flex w-full items-center justify-between bg-transparent px-10 py-6">
@@ -96,6 +99,13 @@ export default function TopHeaderBar({ activeTab, onTabChange }) {
             {link.icon}
           </a>
         ))}
+        <button
+          onClick={() => { playSound("/sounds/enter.mp3"); router.push("/"); }}
+          className="text-white/60 transition-colors hover:text-white"
+          aria-label="Back to home"
+        >
+          <Home className="h-6 w-6" />
+        </button>
         <MuteButton />
       </div>
     </div>
