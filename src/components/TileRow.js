@@ -9,7 +9,7 @@ const TILE_HEIGHT = 90;
 
 const TileRow = ({tiles, focusedIndex, setFocusedIndex}) => {
     const focusedIndexRef = useRef()
-    focusedIndexRef.current = focusedIndex; 
+    focusedIndexRef.current = focusedIndex;
 
     useEffect(() => {
     function handleKey(e) {
@@ -34,7 +34,7 @@ const TileRow = ({tiles, focusedIndex, setFocusedIndex}) => {
           <motion.button
             key={tile.id}
             onFocus={() => setFocusedIndex(index)}
-            initial={{ x: 800, opacity: 0, scale: 0.3, width: size, height: size }}
+            initial={{ x: 800, opacity: 0, scale: 0.3, width: TILE_WIDTH, height: TILE_WIDTH }}
             animate={{ x: 0, width: size, height: size, opacity: isFocused ? 1 : 0.7, scale: 1 }}
             transition={{
               x: { type: "spring", stiffness: 60, damping: 20 },

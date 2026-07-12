@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Activity, Mic, Newspaper } from "lucide-react";
 import TopHeaderBar from "@/components/TopHeaderBar";
@@ -158,6 +158,12 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState("about");
   const [focusedIndex, setFocusedIndex] = useState(0);
   const [tileRowHidden, setTileRowHidden] = useState(false);
+  const [isFirstRender, setIsFirstRender] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsFirstRender(false), 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
 
   const tabsData = {
@@ -187,10 +193,10 @@ export default function Home() {
       <AnimatePresence mode="sync">
         <motion.div
           key={focusedTile.id}
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 0.6 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
+          transition={{ duration: 0.6, ease: "easeInOut"}}
         >
           <focusedTile.Background
             onHideTileRow={() => setTileRowHidden(true)}
