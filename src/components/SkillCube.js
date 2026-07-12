@@ -1,20 +1,73 @@
-const SIZE = 180;
+import { useState } from "react";
+import { Phone, Mail } from "lucide-react";
+
+const SIZE = 300;
 const HALF = SIZE / 2;
 
+function CopyText({ value }) {
+  const [copied, setCopied] = useState(false);
+
+  function handleCopy() {
+    navigator.clipboard.writeText(value);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  }
+
+  return (
+    <button
+      onClick={handleCopy}
+      className="text-lg font-semibold text-white underline decoration-white/50 underline-offset-4 transition-colors hover:text-white/80 hover:cursor-pointer"
+    >
+      {copied ? "Copied!" : value}
+    </button>
+  );
+}
+
 const faces = [
-  { transform: `rotateY(0deg) translateZ(${HALF}px)`, image: "/images/Python-Thumbnail.png" },
-  { transform: `rotateY(180deg) translateZ(${HALF}px)`, image: "/images/JavaThumbnailLogo.png" },
-  { transform: `rotateY(90deg) translateZ(${HALF}px)`, image: "/images/JavaScript-Symbol-Thumbnail.png" },
-  { transform: `rotateY(-90deg) translateZ(${HALF}px)`, image: "/images/HTML5-Thumbnail.png" },
-  { transform: `rotateX(90deg) translateZ(${HALF}px)`, image: "/images/CSS-logo-Thumbnail.png" },
-  { transform: `rotateX(-90deg) translateZ(${HALF}px)`, image: "/images/Cprogramming-Thumbnail.png" },
+  {
+    transform: `rotateY(0deg) translateZ(${HALF}px)`,
+    content: (
+      <div className="flex flex-col items-center gap-3 text-green-400">
+        <Phone className="h-10 w-10" />
+        <CopyText value="+1 (514) 295-4976" />
+      </div>
+    ),
+  },
+  {
+    transform: `rotateY(180deg) translateZ(${HALF}px)`,
+    content: (
+      <div className="flex flex-col items-center gap-3 text-indigo-500">
+        <Mail className="h-10 w-10" />
+        <CopyText value="joel.clenn03@gmail.com" />
+      </div>
+    ),
+  },
+  {
+    transform: `rotateY(90deg) translateZ(${HALF}px)`,
+    content: (
+      <div className="flex flex-col items-center gap-1 px-6 text-center text-white">
+        <p className="text-lg font-bold">Joel Clenn Saputra</p>
+        <p className="text-white/70">Born February 6, 2006</p>
+        <p className="text-white/70">Born in Jakarta, Indonesia</p>
+        <p className="text-white/70">Currently residing in Montreal, QC</p>
+      </div>
+    ),
+  },
+  {
+    transform: `rotateY(-90deg) translateZ(${HALF}px)`,
+    content: (
+      <p className="px-6 text-center text-lg font-semibold text-white">
+        Please contact me for my resume
+      </p>
+    ),
+  },
 ];
 
 export default function SkillCube() {
   return (
     <div
       className="flex items-center justify-center"
-      style={{ width: SIZE, height: SIZE, perspective: 800 }}
+      style={{ width: SIZE, height: SIZE, perspective: 1000 }}
     >
       <div
         className="animate-slow-spin-y relative"
@@ -24,17 +77,17 @@ export default function SkillCube() {
           transformStyle: "preserve-3d",
         }}
       >
-        {faces.map((face) => (
+        {faces.map((face, index) => (
           <div
-            key={face.image}
-            className="absolute flex items-center justify-center rounded-md border border-white/20 bg-white/10 backdrop-blur-sm"
+            key={index}
+            className="absolute flex items-center justify-center rounded-md border-3 border-white/20 bg-black/10 backdrop-blur-[1px]"
             style={{
               width: SIZE,
               height: SIZE,
               transform: face.transform,
             }}
           >
-            <p>Born 2006</p>
+            {face.content}
           </div>
         ))}
       </div>

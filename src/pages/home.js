@@ -139,7 +139,6 @@ const skillDefs = [
     thumbnailLogoStyle: { width: "80%", height: "80%", top: 0, left: 0},
     usedInSchoolwork: true,
    },
-  { name: "SQL" },
 ];
 const skillTiles = skillDefs.map((skill) =>
   createSkillTile(
