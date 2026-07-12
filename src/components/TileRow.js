@@ -1,6 +1,7 @@
 import React from 'react'
 import {useEffect, useState, useRef} from 'react'
 import {motion} from 'framer-motion'
+import playSound from '@/lib/playSound';
 
 
 const TILE_WIDTH = 90;
@@ -14,8 +15,10 @@ const TileRow = ({tiles, focusedIndex, setFocusedIndex}) => {
     useEffect(() => {
     function handleKey(e) {
       if (e.key === "ArrowRight") {
+        playSound("/sounds/focus-move.mp3")
         setFocusedIndex(Math.min(focusedIndexRef.current + 1, tiles.length - 1));
       } else if (e.key === "ArrowLeft") {
+        playSound("/sounds/focus-move.mp3")
         setFocusedIndex(Math.max(focusedIndexRef.current - 1, 0));
       }
     }
