@@ -29,7 +29,7 @@ const TileRow = ({tiles, focusedIndex, setFocusedIndex}) => {
 
 
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-1.5">
       {tiles.map((tile, index) => {
         const isFocused = (index === focusedIndex);
         const size = isFocused ? TILE_WIDTH * 1.4 : TILE_WIDTH;
@@ -47,7 +47,7 @@ const TileRow = ({tiles, focusedIndex, setFocusedIndex}) => {
               width: { type: "spring", stiffness: 260, damping: 24 },
               height: { type: "spring", stiffness: 260, damping: 24 },
             }}
-            className="flex-none overflow-hidden rounded-md focus:outline-none"
+            className="flex-none overflow-hidden rounded-xl focus:outline-none"
             style={{
               border: isFocused ? "2px solid white" : "1px solid rgba(255,255,255,0.15)",
             }}
