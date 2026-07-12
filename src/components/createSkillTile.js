@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import playSound from "@/lib/playSound";
 
 const listVariants = {
   hidden: {},
@@ -64,11 +65,13 @@ export default function createSkillTile(
       const [showFrameworks, setShowFrameworks] = useState(false);
 
       function handleReveal() {
+        playSound("/sounds/enter.mp3");
         setShowFrameworks(true);
         onHideTileRow?.();
       }
 
       function handleBack() {
+        playSound("/sounds/enter.mp3");
         setShowFrameworks(false);
         onShowTileRow?.();
       }

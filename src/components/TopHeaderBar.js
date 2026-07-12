@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import playSound from "@/lib/playSound";
 
 const tabs = [
   { id: "about", label: "About Me" },
@@ -70,7 +71,7 @@ export default function TopHeaderBar({ activeTab, onTabChange }) {
         {tabs.map((tab) => (
           <button
             key={tab.id}
-            onClick={() => onTabChange(tab.id)}
+            onClick={() => { playSound("/sounds/enter.mp3"); onTabChange(tab.id); }}
             className={
               tab.id === activeTab
                 ? "text-lg font-semibold text-white"
