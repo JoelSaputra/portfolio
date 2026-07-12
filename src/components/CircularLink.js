@@ -24,6 +24,7 @@ export default function CircularLink({ profiles = defaultProfiles, onSelect }) {
         setFocusedIndex((i) => Math.max(i - 1, 0));
       } else if (e.key === "Enter") {
         playSound("/sounds/enter.mp3")
+        setTimeout(() => playSound("/sounds/openHome.mp3"), 400);
         onSelect?.(profiles[focusedIndexRef.current]);
       }
     }
