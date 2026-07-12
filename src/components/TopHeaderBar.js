@@ -104,7 +104,7 @@ export default function TopHeaderBar({ activeTab, onTabChange }) {
           className="text-white/60 transition-colors hover:text-white"
           aria-label="Back to home"
         >
-          <Home className="h-6 w-6" />
+          <Home className="h-6 w-6 hover:cursor-pointer" />
         </button>
         <MuteButton />
       </div>

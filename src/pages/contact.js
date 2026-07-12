@@ -63,8 +63,8 @@ export default function Contact() {
         onClick={() => { playSound("/sounds/enter.mp3"); router.push("/"); }}
         className="absolute left-8 top-8 flex items-center gap-2 text-white/60 transition-colors hover:text-white"
       >
-        <ArrowLeft className="h-5 w-5" />
-        <span>Back</span>
+        <ArrowLeft className="h-5 w-5 hover:cursor-pointer" />
+        <span className="hover:cursor-pointer">Back</span>
       </button>
 
       <motion.div
