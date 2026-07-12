@@ -1,8 +1,26 @@
+import { useEffect, useState } from "react";
+
 const tabs = [
   { id: "about", label: "About Me" },
   { id: "projects", label: "Projects" },
   { id: "skills", label: "Skills" },
 ];
+
+function useClock() {
+  const [time, setTime] = useState(null);
+
+  useEffect(() => {
+    const update = () =>
+      setTime(
+        new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })
+      );
+    update();
+    const id = setInterval(update, 1000 * 30);
+    return () => clearInterval(id);
+  }, []);
+
+  return time;
+}
 
 function GithubIcon() {
   return (
@@ -40,8 +58,14 @@ const socialLinks = [
 ];
 
 export default function TopHeaderBar({ activeTab, onTabChange }) {
+  const time = useClock();
+
   return (
     <div className="absolute left-0 top-0 flex w-full items-center justify-between bg-transparent px-10 py-6">
+      <div className="absolute right-8 top-6 text-xl tracking-wide text-white/80">
+        {time}
+      </div>
+
       <div className="flex items-center gap-8">
         {tabs.map((tab) => (
           <button

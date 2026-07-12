@@ -33,7 +33,6 @@ const TileRow = ({tiles, focusedIndex, setFocusedIndex}) => {
         return (
           <motion.button
             key={tile.id}
-            onMouseEnter={() => setFocusedIndex(index)}
             onFocus={() => setFocusedIndex(index)}
             initial={false}
             animate={{ width: size, height: size, opacity: isFocused ? 1 : 0.7 }}

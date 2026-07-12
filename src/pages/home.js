@@ -6,8 +6,34 @@ import TileRow from "@/components/TileRow";
 
 import * as AboutMe from "@/components/AboutMe"
 import * as Education from "@/components/Education"
-import * as DummyProject from "@/components/DummyProject"
 import createSkillTile from "@/components/createSkillTile"
+import createProjectTile from "@/components/createProjectTile"
+
+const projectDefs = [
+  {
+    name: "VoiceCal",
+    description: "Description coming soon.",
+    techStack: [],
+    thumbnailColor: "#8b5cf6",
+  },
+  {
+    name: "RecapAI",
+    description: "Description coming soon.",
+    techStack: [],
+    thumbnailColor: "#f59e0b",
+  },
+];
+const projectTiles = projectDefs.map((project) =>
+  createProjectTile(
+    project.name,
+    project.description,
+    project.techStack,
+    project.thumbnailColor,
+    project.thumbnailImage,
+    project.backgroundImage,
+    project.links
+  )
+);
 
 const skillDefs = [
   {
@@ -104,7 +130,7 @@ export default function Home() {
 
   const tabsData = {
     about: [ AboutMe, Education],
-    projects: [DummyProject],
+    projects: projectTiles,
     skills: skillTiles,
   }
 
