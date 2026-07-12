@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Ps5Background from "@/components/Ps5Background";
 import CircularLink from "@/components/CircularLink";
+import MuteButton from "@/components/MuteButton";
+import { useMusic } from "@/context/MusicContext";
 
 function useClock() {
   const [time, setTime] = useState(null);
@@ -22,6 +24,11 @@ function useClock() {
 export default function Home() {
   const time = useClock();
   const router = useRouter();
+  const { setTrack } = useMusic();
+
+  useEffect(() => {
+    setTrack("/sounds/select-user.mp3");
+  }, [setTrack]);
 
   return (
     <div className="relative flex min-h-screen w-full flex-col items-center justify-center text-white">
@@ -40,8 +47,9 @@ export default function Home() {
           <CircularLink onSelect={(profile) => router.push(`/${profile.id}`)} />
       </div>
 
-      <div className="absolute right-8 top-6 text-lg tracking-wide text-white/80">
+      <div className="absolute right-8 top-6 flex items-center gap-5 text-lg tracking-wide text-white/80">
         {time}
+        <MuteButton />
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Activity, Mic, Newspaper } from "lucide-react";
 import TopHeaderBar from "@/components/TopHeaderBar";
 import TileRow from "@/components/TileRow";
+import { useMusic } from "@/context/MusicContext";
 
 
 import * as AboutMe from "@/components/AboutMe"
@@ -159,11 +160,16 @@ export default function Home() {
   const [focusedIndex, setFocusedIndex] = useState(0);
   const [tileRowHidden, setTileRowHidden] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
+  const { setTrack } = useMusic();
 
   useEffect(() => {
     const timer = setTimeout(() => setIsFirstRender(false), 1000);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    setTrack("/sounds/home-menu.mp3");
+  }, [setTrack]);
 
 
   const tabsData = {

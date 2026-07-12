@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import playSound from "@/lib/playSound";
 
 const SLOT_WIDTH = 180;
 
@@ -16,10 +17,13 @@ export default function CircularLink({ profiles = defaultProfiles, onSelect }) {
   useEffect(() => {
     function handleKey(e) {
       if (e.key === "ArrowRight") {
+        playSound("/sounds/focus-move.mp3")
         setFocusedIndex((i) => Math.min(i + 1, profiles.length - 1));
       } else if (e.key === "ArrowLeft") {
+        playSound("/sounds/focus-move.mp3")
         setFocusedIndex((i) => Math.max(i - 1, 0));
       } else if (e.key === "Enter") {
+        playSound("/sounds/enter.mp3")
         onSelect?.(profiles[focusedIndexRef.current]);
       }
     }

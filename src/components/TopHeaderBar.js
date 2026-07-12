@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import playSound from "@/lib/playSound";
+import MuteButton from "@/components/MuteButton";
 
 const tabs = [
   { id: "about", label: "About Me" },
@@ -95,6 +96,7 @@ export default function TopHeaderBar({ activeTab, onTabChange }) {
             {link.icon}
           </a>
         ))}
+        <MuteButton />
       </div>
     </div>
   );
