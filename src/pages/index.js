@@ -48,6 +48,10 @@ export default function Home() {
           <CircularLink onSelect={(profile) => router.push(`/${profile.id}`)} />
       </div>
 
+      <p className="mt-6 text-sm text-white/40">
+        Best viewed on desktop (1440×900, MacBook Air)
+      </p>
+
       <div className="absolute right-24 top-6 flex items-center gap-5 text-lg tracking-wide text-white/80">
         {time}
         <MuteButton />
