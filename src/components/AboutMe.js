@@ -1,5 +1,6 @@
 import { SVG3D } from "3dsvg";
 import { User } from "lucide-react";
+import SkillCube from "./SkillCube";
 
 export const id = "about-me";
 
@@ -37,8 +38,8 @@ export function Background() {
       </div>
 
 
-      <div className="absolute left-140 mb-5 w-250 h-220">
-        
+      <div className="absolute left-140 mb-5 w-250 h-220 flex items-center justify-center">
+        <SkillCube />
       </div>
     </div>
   );
