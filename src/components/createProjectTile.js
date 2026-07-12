@@ -10,6 +10,7 @@ export default function createProjectTile(
   links = {},
   textPosition = {},
   thumbnailColors = null,
+  Icon = null,
 ) {
   const id = name.toLowerCase().replace(/\s+/g, "-");
   const textPos = { ...defaultTextPosition, ...textPosition };
@@ -22,7 +23,7 @@ export default function createProjectTile(
           className="flex h-full w-full items-center justify-center rounded-md"
           style={{
             background: thumbnailColors
-              ? `linear-gradient(105deg, ${thumbnailColors.join(", ")})`
+              ? `radial-gradient(ellipse at top right, ${thumbnailColors.join(", ")})`
               : thumbnailColor
               ? `linear-gradient(135deg, ${thumbnailColor}, #0a0a0a 85%)`
               : "#1a1a1a",
@@ -35,7 +36,10 @@ export default function createProjectTile(
               className="h-4/5 w-4/5 object-contain"
             />
           ) : (
-            <p className="px-3 text-center text-[12px] font-semibold text-white">{name}</p>
+            <div className="flex flex-col items-center gap-2">
+              {Icon && <Icon className="h-8 w-8 text-white" />}
+              <p className="px-3 text-center text-[12px] font-extrabold  text-white">{name}</p>
+            </div>
           )}
         </div>
       );

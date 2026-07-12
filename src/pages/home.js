@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { Activity, Mic, Newspaper } from "lucide-react";
 import TopHeaderBar from "@/components/TopHeaderBar";
 import TileRow from "@/components/TileRow";
 
@@ -16,11 +17,12 @@ const projectDefs = [
     description: "A terminal for looking at the market in a better way, with important fundamentals and technical analysis.\n\nA platform for quantitative backtesting",
     techStack: ["ReactJS", "NextJS", "TailwindCSS", "Python", "FastAPI", "yfinance", "Finnhub API", "NumPy", "Pandas"],
     thumbnailColor: "#000000",
-    thumbnailColors: ["rgb(7, 173, 46)" ,"#000000", "rgb(255, 32, 32)"],
+    thumbnailColors: [ "#000000", "rgb(13, 119, 13)","#000000", ],
     backgroundImage: "/images/Bloomberg-lite.png",
     links: {github: "https://github.com/JoelSaputra/bloomberg-lite",
           },
     textPosition: { bottom: 170, right: 40 },
+    icon: Activity,
   },
 
   {
@@ -28,23 +30,25 @@ const projectDefs = [
     description: "A speech to text - calendar generator",
     techStack: ["Javascript", "Python", "CSS", "Google API", "SQLAlchemy", "Anthropic SDK"],
     thumbnailColor: "#6b7280",
-    thumbnailColors: ["#ffffff", "#ffd700"],
+    thumbnailColors: ["#ffffff", "rgb(127, 113, 38)", "#ffffff"],
     backgroundImage: "/images/VoiceCal.png",
     links: {github: "https://github.com/JoelSaputra/VoiceCal",
             demo: "https://voicecal.onrender.com/"
           },
     textPosition: { bottom: 260, right: 40 },
+    icon: Mic,
   },
   {
     name: "RecapAI",
     description: "A summarizer for daily finance news using python -- This project is imported to the bloomberg-lite project at the News tab ",
     techStack: ["Python", "SQLite", "FastAPI", "APScheduler", "Finnhub API", "Google Gemini API "],
     thumbnailColor: "#374151",
-    thumbnailColors: ["#3b82f6", "#000000", "#ffffff"],
+    thumbnailColors: [ "#000000", "#3b82f6", "#000000"],
     backgroundImage: "/images/RecapAI.png",
     links: {github: "https://github.com/JoelSaputra/RecapAI",
           },
     textPosition: { bottom: 260, right: 40 },
+    icon: Newspaper,
   },
 
 ];
@@ -58,7 +62,8 @@ const projectTiles = projectDefs.map((project) =>
     project.backgroundImage,
     project.links,
     project.textPosition,
-    project.thumbnailColors
+    project.thumbnailColors,
+    project.icon
   )
 );
 
