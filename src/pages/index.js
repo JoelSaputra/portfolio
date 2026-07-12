@@ -47,7 +47,7 @@ export default function Home() {
           <CircularLink onSelect={(profile) => router.push(`/${profile.id}`)} />
       </div>
 
-      <div className="absolute right-8 top-6 flex items-center gap-5 text-lg tracking-wide text-white/80">
+      <div className="absolute right-24 top-6 flex items-center gap-5 text-lg tracking-wide text-white/80">
         {time}
         <MuteButton />
       </div>

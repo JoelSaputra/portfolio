@@ -1,7 +1,6 @@
-import { createContext, useContext, useEffect, useRef, useState, useCallback } from "react";
+import { createContext, useContext, useRef, useState, useCallback } from "react";
 
 const MusicContext = createContext(null);
-const STORAGE_KEY = "musicMuted";
 
 export function MusicProvider({ children }) {
   const audioRef = useRef(null);
@@ -15,19 +14,6 @@ export function MusicProvider({ children }) {
     audioRef.current = audio;
   }
 
-  useEffect(() => {
-    const audio = audioRef.current;
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === "false") {
-      audio.muted = false;
-      setMuted(false);
-    }
-
-    return () => {
-      audio.pause();
-    };
-  }, []);
-
   const toggleMute = useCallback(() => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -36,15 +22,14 @@ export function MusicProvider({ children }) {
       audio.play().catch(() => {});
     }
     setMuted(audio.muted);
-    localStorage.setItem(STORAGE_KEY, String(audio.muted));
   }, []);
 
   const setTrack = useCallback((path) => {
     const audio = audioRef.current;
-    if (!audio || audio.src.endsWith(path)) return;
-    const wasMuted = audio.muted;
+    if (!audio) return;
     audio.src = path;
-    audio.muted = wasMuted;
+    audio.muted = true;
+    setMuted(true);
     audio.play().catch(() => {});
   }, []);
 
