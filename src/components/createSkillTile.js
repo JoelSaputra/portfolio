@@ -136,7 +136,7 @@ export default function createSkillTile(
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: "easeOut", delay: 0.9 }}
-                className="mt-8 rounded-full border border-white/30 px-6 py-2 text-sm font-medium text-white transition-colors hover:bg-white hover:text-[#0a0a0a]"
+                className="mt-8 rounded-full border-3 border-white/30 px-6 py-2 text-sm font-medium text-white transition-colors hover:bg-white hover:text-[#0a0a0a] hover:cursor-pointer"
               >
                 Frameworks and Libraries I have used
               </motion.button>
