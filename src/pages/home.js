@@ -10,24 +10,43 @@ import createSkillTile from "@/components/createSkillTile"
 import createProjectTile from "@/components/createProjectTile"
 
 const projectDefs = [
+
+  {
+    name: "Bloomberg-lite",
+    description: "A terminal for looking at the market in a better way, with important fundamentals and technical analysis.\n\nA platform for quantitative backtesting",
+    techStack: ["ReactJS", "NextJS", "TailwindCSS", "Python", "FastAPI", "yfinance", "Finnhub API", "NumPy", "Pandas"],
+    thumbnailColor: "#000000",
+    thumbnailColors: ["rgb(7, 173, 46)" ,"#000000", "rgb(255, 32, 32)"],
+    backgroundImage: "/images/Bloomberg-lite.png",
+    links: {github: "https://github.com/JoelSaputra/bloomberg-lite",
+          },
+    textPosition: { bottom: 170, right: 40 },
+  },
+
   {
     name: "VoiceCal",
     description: "A speech to text - calendar generator",
-    techStack: ["Javascript", "Python", "Google API", "SQLAlchemy"],
-    thumbnailColor: "#8b5cf6",
+    techStack: ["Javascript", "Python", "CSS", "Google API", "SQLAlchemy", "Anthropic SDK"],
+    thumbnailColor: "#6b7280",
+    thumbnailColors: ["#ffffff", "#ffd700"],
     backgroundImage: "/images/VoiceCal.png",
     links: {github: "https://github.com/JoelSaputra/VoiceCal",
             demo: "https://voicecal.onrender.com/"
           },
-    textPosition: { bottom: 260, right: 160 },
+    textPosition: { bottom: 260, right: 40 },
   },
   {
     name: "RecapAI",
-    description: "Description coming soon.",
-    techStack: [],
-    thumbnailColor: "#f59e0b",
-    textPosition: { bottom: 260, right: 160 },
+    description: "A summarizer for daily finance news using python -- This project is imported to the bloomberg-lite project at the News tab ",
+    techStack: ["Python", "SQLite", "FastAPI", "APScheduler", "Finnhub API", "Google Gemini API "],
+    thumbnailColor: "#374151",
+    thumbnailColors: ["#3b82f6", "#000000", "#ffffff"],
+    backgroundImage: "/images/RecapAI.png",
+    links: {github: "https://github.com/JoelSaputra/RecapAI",
+          },
+    textPosition: { bottom: 260, right: 40 },
   },
+
 ];
 const projectTiles = projectDefs.map((project) =>
   createProjectTile(
@@ -38,7 +57,8 @@ const projectTiles = projectDefs.map((project) =>
     project.thumbnailImage,
     project.backgroundImage,
     project.links,
-    project.textPosition
+    project.textPosition,
+    project.thumbnailColors
   )
 );
 

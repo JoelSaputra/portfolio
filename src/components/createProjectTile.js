@@ -9,6 +9,7 @@ export default function createProjectTile(
   backgroundImage = null,
   links = {},
   textPosition = {},
+  thumbnailColors = null,
 ) {
   const id = name.toLowerCase().replace(/\s+/g, "-");
   const textPos = { ...defaultTextPosition, ...textPosition };
@@ -20,17 +21,21 @@ export default function createProjectTile(
         <div
           className="flex h-full w-full items-center justify-center rounded-md"
           style={{
-            background: thumbnailColor
+            background: thumbnailColors
+              ? `linear-gradient(105deg, ${thumbnailColors.join(", ")})`
+              : thumbnailColor
               ? `linear-gradient(135deg, ${thumbnailColor}, #0a0a0a 85%)`
               : "#1a1a1a",
           }}
         >
-          {thumbnailImage && (
+          {thumbnailImage ? (
             <img
               src={thumbnailImage}
               alt={`${name} thumbnail`}
               className="h-4/5 w-4/5 object-contain"
             />
+          ) : (
+            <p className="px-3 text-center text-[12px] font-semibold text-white">{name}</p>
           )}
         </div>
       );
@@ -42,7 +47,7 @@ export default function createProjectTile(
             className="absolute inset-0 scale-105"
             style={{
               background: thumbnailColor
-                ? `linear-gradient(135deg, ${thumbnailColor}, #0a0a0a 85%)`
+                ? `linear-gradient(105deg, ${thumbnailColor}, #0a0a0a 85%)`
                 : "#0a0a0a",
               ...(backgroundImage
                 ? {
@@ -66,7 +71,7 @@ export default function createProjectTile(
             }}
           >
             <h2 className="text-6xl font-semibold">{name}</h2>
-            <p className="mt-4 text-lg text-white/70">
+            <p className="mt-4 text-lg text-white/70 whitespace-pre-line">
               {description || "Description coming soon."}
             </p>
 
