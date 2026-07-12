@@ -1,3 +1,5 @@
+const defaultTextPosition = { bottom: 260, right: 160 };
+
 export default function createProjectTile(
   name,
   description = "",
@@ -6,8 +8,10 @@ export default function createProjectTile(
   thumbnailImage = null,
   backgroundImage = null,
   links = {},
+  textPosition = {},
 ) {
   const id = name.toLowerCase().replace(/\s+/g, "-");
+  const textPos = { ...defaultTextPosition, ...textPosition };
 
   return {
     id,
@@ -33,22 +37,34 @@ export default function createProjectTile(
     },
     Background() {
       return (
-        <div
-          className="fixed inset-0 -z-10"
-          style={{
-            background: thumbnailColor
-              ? `linear-gradient(135deg, ${thumbnailColor}, #0a0a0a 85%)`
-              : "#0a0a0a",
-            ...(backgroundImage
-              ? {
-                  backgroundImage: `linear-gradient(rgba(10,10,10,0.55), rgba(10,10,10,0.55)), url("${backgroundImage}")`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }
-              : {}),
-          }}
-        >
-          <div className="absolute bottom-24 left-40 max-w-2xl">
+        <div className="fixed inset-0 -z-10 overflow-hidden">
+          <div
+            className="absolute inset-0 scale-105"
+            style={{
+              background: thumbnailColor
+                ? `linear-gradient(135deg, ${thumbnailColor}, #0a0a0a 85%)`
+                : "#0a0a0a",
+              ...(backgroundImage
+                ? {
+                    backgroundImage: `linear-gradient(rgba(10,10,10,0.75), rgba(10,10,10,0.75)), url("${backgroundImage}")`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    filter: "blur(2px)",
+                  }
+                : {}),
+            }}
+          />
+
+         
+          <div
+            className="absolute max-w-2xl bg-gray-600/10 border-2 backdrop-blur-md rounded-2xl p-8"
+            style={{
+              top: textPos.top,
+              bottom: textPos.bottom,
+              left: textPos.left,
+              right: textPos.right,
+            }}
+          >
             <h2 className="text-6xl font-semibold">{name}</h2>
             <p className="mt-4 text-lg text-white/70">
               {description || "Description coming soon."}
@@ -92,7 +108,7 @@ export default function createProjectTile(
               </div>
             )}
           </div>
-        </div>
+          </div>
       );
     },
   };

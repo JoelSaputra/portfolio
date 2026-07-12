@@ -12,15 +12,21 @@ import createProjectTile from "@/components/createProjectTile"
 const projectDefs = [
   {
     name: "VoiceCal",
-    description: "Description coming soon.",
-    techStack: [],
+    description: "A speech to text - calendar generator",
+    techStack: ["Javascript", "Python", "Google API", "SQLAlchemy"],
     thumbnailColor: "#8b5cf6",
+    backgroundImage: "/images/VoiceCal.png",
+    links: {github: "https://github.com/JoelSaputra/VoiceCal",
+            demo: "https://voicecal.onrender.com/"
+          },
+    textPosition: { bottom: 260, right: 160 },
   },
   {
     name: "RecapAI",
     description: "Description coming soon.",
     techStack: [],
     thumbnailColor: "#f59e0b",
+    textPosition: { bottom: 260, right: 160 },
   },
 ];
 const projectTiles = projectDefs.map((project) =>
@@ -31,7 +37,8 @@ const projectTiles = projectDefs.map((project) =>
     project.thumbnailColor,
     project.thumbnailImage,
     project.backgroundImage,
-    project.links
+    project.links,
+    project.textPosition
   )
 );
 
