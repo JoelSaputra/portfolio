@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Phone, Mail } from "lucide-react";
 
 const SIZE = 300;
-const HALF = SIZE / 2;
+const HALF = SIZE/2;
 
 function CopyText({ value }) {
   const [copied, setCopied] = useState(false);
@@ -80,7 +80,7 @@ export default function SkillCube() {
         {faces.map((face, index) => (
           <div
             key={index}
-            className="absolute flex items-center justify-center rounded-md border-3 border-white/20 bg-black/10 backdrop-blur-[1px]"
+            className="absolute flex items-center justify-center rounded-md border-4 border-white/20 bg-black/10 backdrop-blur-[1px]"
             style={{
               width: SIZE,
               height: SIZE,
