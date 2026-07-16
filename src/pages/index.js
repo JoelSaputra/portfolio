@@ -48,9 +48,16 @@ export default function Home() {
           <CircularLink onSelect={(profile) => router.push(`/${profile.id}`)} />
       </div>
 
-      <p className="mt-6 text-sm text-white/40">
+      <div className="flex flex-col align-middle">
+      <p className=" mb-2 ml-15 text-sm text-white/40">
+        Use arrow keys to move tiles
+      </p>
+      
+      <p className="text-sm text-white/40">
         Best viewed on desktop (1440×900, MacBook Air)
       </p>
+      </div>
+      
 
       <div className="absolute right-24 top-6 flex items-center gap-5 text-lg tracking-wide text-white/80">
         {time}
