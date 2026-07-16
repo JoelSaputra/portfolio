@@ -21,7 +21,7 @@ const projectDefs = [
     thumbnailColors: [ "#000000", "rgb(13, 119, 13)","#000000", ],
     backgroundImage: "/images/Bloomberg-lite.png",
     links: {github: "https://github.com/JoelSaputra/bloomberg-lite",
-            demo: "https://bloomberg-lite.vercel.app/"
+            demo: "https://bloomberg-lite.vercel.app/commandCenter"
           },
     textPosition: { bottom: 170, right: 40 },
     icon: Activity,
