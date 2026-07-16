@@ -29,11 +29,9 @@ export function Background() {
           CS Student · AI Enthusiast
         </p>
         <p className="mt-4 text-white/70">
-          Studying Computer Science at McGill University, deep into AI and
-          still hungry to learn something new every day. I build things
+          Studying Computer Science at McGill University, hungry to learn something new every day. I build things
           because I like figuring out how they work, then making them work
-          better — and right now, I&apos;m on the hunt for my first real shot
-          in tech.
+          better.
         </p>
       </div>
 
