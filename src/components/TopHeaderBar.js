@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { Home } from "lucide-react";
 import playSound from "@/lib/playSound";
 import MuteButton from "@/components/MuteButton";
+import useIsMobile from "@/lib/useIsMobile";
 
 const tabs = [
   { id: "about", label: "About Me" },
@@ -64,22 +65,25 @@ const socialLinks = [
 export default function TopHeaderBar({ activeTab, onTabChange }) {
   const time = useClock();
   const router = useRouter();
+  const isMobile = useIsMobile();
 
   return (
-    <div className="absolute left-0 top-0 flex w-full items-center justify-between bg-transparent px-10 py-6">
-      <div className="absolute right-8 top-6 text-xl tracking-wide text-white/80">
-        {time}
-      </div>
+    <div className="absolute left-0 top-0 flex w-full flex-col gap-3 bg-transparent px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-10 sm:py-6">
+      {!isMobile && (
+        <div className="absolute right-8 top-6 text-xl tracking-wide text-white/80">
+          {time}
+        </div>
+      )}
 
-      <div className="flex items-center gap-8">
+      <div className="flex items-center gap-4 overflow-x-auto sm:gap-8">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => { playSound("/sounds/enter.mp3"); onTabChange(tab.id); }}
             className={
               tab.id === activeTab
-                ? "text-lg font-semibold text-white"
-                : "text-lg font-normal text-white/40 transition-colors hover:text-white/70"
+                ? "whitespace-nowrap text-base font-semibold text-white sm:text-lg"
+                : "whitespace-nowrap text-base font-normal text-white/40 transition-colors hover:text-white/70 sm:text-lg"
             }
           >
             {tab.label}
@@ -87,7 +91,7 @@ export default function TopHeaderBar({ activeTab, onTabChange }) {
         ))}
       </div>
 
-      <div className="mr-28 flex items-center gap-6">
+      <div className="flex items-center gap-4 sm:mr-28 sm:gap-6">
         {socialLinks.map((link) => (
           <a
             key={link.id}
