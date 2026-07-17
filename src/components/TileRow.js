@@ -40,7 +40,10 @@ const TileRow = ({tiles, focusedIndex, setFocusedIndex}) => {
           <motion.button
             key={tile.id}
             onFocus={() => setFocusedIndex(index)}
-            onClick={() => playSound("/sounds/focus-move.mp3")}
+            onClick={() => {
+              playSound("/sounds/focus-move.mp3");
+              setFocusedIndex(index);
+            }}
             initial={{ x: 800, opacity: 0, scale: 0.3, width: tileWidth, height: tileWidth }}
             animate={{ x: 0, width: size, height: size, opacity: isFocused ? 1 : 0.7, scale: 1 }}
             transition={{
