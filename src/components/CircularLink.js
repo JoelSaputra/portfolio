@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import playSound from "@/lib/playSound";
+import useIsMobile from "@/lib/useIsMobile";
 
 const SLOT_WIDTH = 180;
+const SLOT_WIDTH_MOBILE = 130;
 
 const defaultProfiles = [
   { id: "home", label: "Home", color: "#4f9dff" },
@@ -13,6 +15,8 @@ export default function CircularLink({ profiles = defaultProfiles, onSelect }) {
   const [focusedIndex, setFocusedIndex] = useState(0);
   const focusedIndexRef = useRef(focusedIndex);
   focusedIndexRef.current = focusedIndex;
+  const isMobile = useIsMobile();
+  const slotWidth = isMobile ? SLOT_WIDTH_MOBILE : SLOT_WIDTH;
 
   useEffect(() => {
     function handleKey(e) {
@@ -33,7 +37,7 @@ export default function CircularLink({ profiles = defaultProfiles, onSelect }) {
   }, [profiles, onSelect]);
 
   const mid = (profiles.length - 1) / 2;
-  const offset = -(focusedIndex - mid) * SLOT_WIDTH;
+  const offset = -(focusedIndex - mid) * slotWidth;
 
   return (
     <div className="flex w-screen justify-center mb-20 overflow-hidden py-8">
@@ -45,7 +49,9 @@ export default function CircularLink({ profiles = defaultProfiles, onSelect }) {
         {profiles.map((profile, index) => {
           const distance = Math.abs(index - focusedIndex);
           const isFocused = distance === 0;
-          const size = isFocused ? 176 : distance === 1 ? 108 : 80;
+          const size = isMobile
+            ? (isFocused ? 128 : distance === 1 ? 84 : 64)
+            : (isFocused ? 176 : distance === 1 ? 108 : 80);
           const opacity = isFocused ? 1 : distance === 1 ? 0.55 : 0.3;
 
           return (
@@ -59,7 +65,7 @@ export default function CircularLink({ profiles = defaultProfiles, onSelect }) {
                 }
               }}
               className="flex flex-none flex-col items-center gap-3 focus:outline-none"
-              style={{ width: SLOT_WIDTH }}
+              style={{ width: slotWidth }}
             >
               <motion.div
                 animate={{ width: size, height: size, opacity }}

@@ -68,7 +68,7 @@ export default function Contact() {
       </button>
 
       <motion.div
-        className="relative mx-auto max-w-4xl px-16 py-20"
+        className="relative mx-auto max-w-4xl px-6 py-20 sm:px-16"
         initial="hidden"
         animate="show"
         variants={listVariants}

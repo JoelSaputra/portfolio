@@ -48,18 +48,18 @@ export default function Home() {
           <CircularLink onSelect={(profile) => router.push(`/${profile.id}`)} />
       </div>
 
-      <div className="flex flex-col align-middle">
-      <p className=" mb-2 ml-15 text-sm text-white/40">
-        Use arrow keys to move tiles
+      <div className="flex flex-col items-center text-center sm:items-start sm:text-left">
+      <p className="mb-2 text-sm text-white/40 sm:ml-15">
+        Use arrow keys to move tiles, or tap
       </p>
-      
-      <p className="text-sm text-white/40">
+
+      <p className="hidden text-sm text-white/40 sm:block">
         Best viewed on desktop (1440×900, MacBook Air)
       </p>
       </div>
-      
 
-      <div className="absolute right-24 top-6 flex items-center gap-5 text-lg tracking-wide text-white/80">
+
+      <div className="absolute right-4 top-4 flex items-center gap-3 text-sm tracking-wide text-white/80 sm:right-24 sm:top-6 sm:gap-5 sm:text-lg">
         {time}
         <MuteButton />
       </div>

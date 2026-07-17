@@ -2,15 +2,18 @@ import React from 'react'
 import {useEffect, useState, useRef} from 'react'
 import {motion} from 'framer-motion'
 import playSound from '@/lib/playSound';
+import useIsMobile from '@/lib/useIsMobile';
 
 
 const TILE_WIDTH = 90;
-const TILE_HEIGHT = 90;
+const TILE_WIDTH_MOBILE = 64;
 
 
 const TileRow = ({tiles, focusedIndex, setFocusedIndex}) => {
     const focusedIndexRef = useRef()
     focusedIndexRef.current = focusedIndex;
+    const isMobile = useIsMobile();
+    const tileWidth = isMobile ? TILE_WIDTH_MOBILE : TILE_WIDTH;
 
     useEffect(() => {
     function handleKey(e) {
@@ -29,16 +32,16 @@ const TileRow = ({tiles, focusedIndex, setFocusedIndex}) => {
 
 
   return (
-    <div className="flex gap-1.5">
+    <div className="flex max-w-[90vw] gap-1.5 overflow-x-auto pb-2">
       {tiles.map((tile, index) => {
         const isFocused = (index === focusedIndex);
-        const size = isFocused ? TILE_WIDTH * 1.4 : TILE_WIDTH;
+        const size = isFocused ? tileWidth * 1.4 : tileWidth;
         return (
           <motion.button
             key={tile.id}
             onFocus={() => setFocusedIndex(index)}
             onClick={() => playSound("/sounds/focus-move.mp3")}
-            initial={{ x: 800, opacity: 0, scale: 0.3, width: TILE_WIDTH, height: TILE_WIDTH }}
+            initial={{ x: 800, opacity: 0, scale: 0.3, width: tileWidth, height: tileWidth }}
             animate={{ x: 0, width: size, height: size, opacity: isFocused ? 1 : 0.7, scale: 1 }}
             transition={{
               x: { type: "spring", stiffness: 60, damping: 20 },

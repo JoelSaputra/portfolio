@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import playSound from "@/lib/playSound";
+import useIsMobile from "@/lib/useIsMobile";
 
 const listVariants = {
   hidden: {},
@@ -63,6 +64,7 @@ export default function createSkillTile(
     },
     Background({ onHideTileRow, onShowTileRow } = {}) {
       const [showFrameworks, setShowFrameworks] = useState(false);
+      const isMobile = useIsMobile();
 
       function handleReveal() {
         playSound("/sounds/enter.mp3");
@@ -92,7 +94,7 @@ export default function createSkillTile(
             transition={{ duration: 0.5, ease: "easeOut" }}
           />
 
-          {backgroundImage && (
+          {backgroundImage && !isMobile && (
             <motion.img
               src={backgroundImage}
               alt={`${name} logo`}
@@ -111,12 +113,20 @@ export default function createSkillTile(
             />
           )}
 
+          {backgroundImage && isMobile && (
+            <img
+              src={backgroundImage}
+              alt={`${name} logo`}
+              className="fixed right-[-15%] top-16 w-[70%] object-contain opacity-20"
+            />
+          )}
+
           <motion.div
-            className="relative pb-20 pl-40 pr-20 max-w-6xl"
-            animate={{ paddingTop: showFrameworks ? 120 : 288 }}
+            className={isMobile ? "relative max-w-6xl px-6 pb-20" : "relative pb-20 pl-40 pr-20 max-w-6xl"}
+            animate={{ paddingTop: isMobile ? (showFrameworks ? 200 : 240) : (showFrameworks ? 120 : 288) }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            <h2 className="text-7xl font-semibold mt-5 ">{name}</h2>
+            <h2 className={`font-semibold mt-5 ${isMobile ? "text-4xl" : "text-7xl"}`}>{name}</h2>
 
             {(usedInSchoolwork || usedInProjects) && (
               <motion.ul
@@ -159,9 +169,9 @@ export default function createSkillTile(
                       <motion.div
                         key={framework.name}
                         variants={cardVariants}
-                        className="w-72 overflow-hidden rounded-md border border-white/20 bg-white/10 shadow-lg shadow-black/20 backdrop-blur-xs"
+                        className="w-full max-w-xs sm:w-72 overflow-hidden rounded-md border border-white/20 bg-white/10 shadow-lg shadow-black/20 backdrop-blur-xs"
                       >
-                        <div className="flex h-72 w-full items-center justify-center bg-gradient-to-b from-white/10 to-transparent">
+                        <div className="flex h-48 w-full items-center justify-center bg-gradient-to-b from-white/10 to-transparent sm:h-72">
                           {framework.image && (
                             <img
                               src={framework.image}
